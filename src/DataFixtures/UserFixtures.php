@@ -21,8 +21,8 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $userArray = [
-            ["firstName" => "Mathias", "lastName" => "Gilles", "password" => "fb132fce5", "email" => "mathiasgilles136@gmail.com", "address" => "65 avenue de Poissy", "postalCode" => 78260, "city" => "Achères", "wallet" => 0.00, "phone" => "0612687977", "roles" => ["ROLE_ADMIN"]],
-            ["firstName" => "Diego", "lastName" => "Gilles", "password" => "fb132fce5", "email" => "diego.gilles@gmail.com", "address" => "154 rue Lafayette", "postalCode" => 75011, "city" => "Paris", "wallet" => 0.00, "phone" => "0612687977", "roles" => ["ROLE_USER"]]
+            ["firstName" => "Mathias", "lastName" => "Gilles", "password" => "fb132fce5", "email" => "mathiasgilles136@gmail.com", "address" => "65 avenue de Poissy", "postalCode" => 78260, "city" => "Achères", "wallet" => 0.00, "phone" => "0612687977", "roles" => ["ROLE_ADMIN"], "cryptoWallet" => 0.00],
+            ["firstName" => "Diego", "lastName" => "Gilles", "password" => "fb132fce5", "email" => "diego.gilles@gmail.com", "address" => "154 rue Lafayette", "postalCode" => 75011, "city" => "Paris", "wallet" => 0.00, "phone" => "0612687977", "roles" => ["ROLE_USER"], "cryptoWallet" => 0.00]
         ];
 
         foreach ($userArray as $user) {
@@ -36,6 +36,7 @@ class UserFixtures extends Fixture
                 ->setFirstName($user['firstName'])
                 ->setPhone($user['phone'])
                 ->setWallet($user['wallet'])
+                ->setCryptoWallet($user['cryptoWallet'])
                 ->setPassword($this->passwordHasher->hashPassword($new, $user['password']));
             $manager->persist($new);
         }

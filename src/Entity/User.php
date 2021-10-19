@@ -73,6 +73,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $wallet;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $cryptoWallet;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -242,6 +247,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setWallet(float $wallet): self
     {
         $this->wallet = $wallet;
+
+        return $this;
+    }
+
+    public function getCryptoWallet(): ?float
+    {
+        return $this->cryptoWallet;
+    }
+
+    public function setCryptoWallet(float $cryptoWallet): self
+    {
+        $this->cryptoWallet = $cryptoWallet;
 
         return $this;
     }
